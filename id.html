@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Degree College - ID Card Generator</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
+
+  <div class="bg-white shadow-xl rounded-2xl p-6 max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- FORM -->
+    <div>
+      <h1 class="text-2xl font-bold mb-4">Aditya Degree College</h1>
+      <p class="text-gray-500 mb-6">Student ID Card Generator</p>
+
+      <div class="space-y-4">
+        <input id="name" type="text" placeholder="Student Name" class="w-full p-3 border rounded-lg">
+        <input id="course" type="text" placeholder="Course / Department" class="w-full p-3 border rounded-lg">
+        <input id="idNumber" type="text" placeholder="ID Number" class="w-full p-3 border rounded-lg">
+        <input id="validity" type="text" placeholder="Validity" class="w-full p-3 border rounded-lg">
+
+        <div>
+          <label class="text-sm text-gray-600">Upload Photo</label>
+          <input id="photo" type="file" accept="image/*" class="w-full mt-1">
+        </div>
+
+        <button onclick="generateCard()" class="w-full bg-black text-white p-3 rounded-lg">
+          Generate ID Card
+        </button>
+      </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="flex items-center justify-center">
+
+      <!-- CARD -->
+      <div id="card"
+           class="relative shadow-xl overflow-hidden bg-white"
+           style="
+             width: 300px;
+             height: 500px;
+             background-image: url('card1.jpeg');
+             background-size: 100% 100%;
+             background-repeat: no-repeat;
+           ">
+
+        <!-- PHOTO -->
+        <img id="cardPhoto"
+             class="absolute object-cover"
+             style="
+               top: 125px;
+               left: 90px;
+               width: 120px;
+               height: 135px;
+             ">
+
+        <!-- NAME -->
+        <div id="cardName"
+             class="absolute font-bold text-lg text-black text-center"
+             style="
+               top: 275px;
+               left: 0;
+               width: 100%;
+             ">
+          Student Name
+        </div>
+
+        <!-- QR -->
+        <div id="qr"
+             class="absolute"
+             style="
+               bottom: 85px;
+               left: 35px;
+             ">
+        </div>
+
+        <!-- DETAILS -->
+        <div class="absolute text-sm text-black"
+             style="
+               bottom: 95px;
+               right: 35px;
+               line-height: 1.6;
+             ">
+          <div><strong>ID:</strong> <span id="cardId">0000</span></div>
+          <div><strong>Course:</strong> <span id="cardCourse">Course</span></div>
+          <div><strong>Validity:</strong> <span id="cardValidity">----</span></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+<script>
+
+let qrCode;
+
+function generateCard() {
+
+  const name = document.getElementById('name').value;
+  const course = document.getElementById('course').value;
+  const idNumber = document.getElementById('idNumber').value;
+  const validity = document.getElementById('validity').value;
+  const photoInput = document.getElementById('photo');
+
+  document.getElementById('cardName').innerText = name || 'Student Name';
+  document.getElementById('cardCourse').innerText = course || 'Course';
+  document.getElementById('cardId').innerText = idNumber || '0000';
+  document.getElementById('cardValidity').innerText = validity || '----';
+
+  if (photoInput.files && photoInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = e => document.getElementById('cardPhoto').src = e.target.result;
+    reader.readAsDataURL(photoInput.files[0]);
+  }
+
+  document.getElementById('qr').innerHTML = "";
+
+  qrCode = new QRCode(document.getElementById('qr'), {
+    text: idNumber || "0000",
+    width: 70,
+    height: 70
+  });
+}
+
+</script>
+
+</body>
+</html>

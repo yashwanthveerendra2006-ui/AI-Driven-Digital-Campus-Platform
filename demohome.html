@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aditya Degree College</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        /* ✅ NAVBAR */
+        .navbar {
+            background: #007BFF;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* ✅ DROPDOWN */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 190px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            top: 35px;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #007BFF;
+            padding: 10px;
+            display: block;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .dropdown-content a:hover {
+            background: #f1f1f1;
+        }
+
+        /* ✅ MAIN LAYOUT */
+        .main {
+            display: flex;
+            height: calc(100vh - 70px);
+            padding: 20px;
+            gap: 20px;
+            box-sizing: border-box;
+        }
+
+        /* ✅ MEMBERS (WIDER NOW 😎) */
+        .members {
+            width: 50%;   /* ✅ Increased width */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+            padding: 12px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 170px;   /* ✅ Bigger image */
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .card h4 {
+            margin: 8px 0 0;
+            color: #007BFF;
+        }
+
+        /* ✅ COLLEGE IMAGE */
+        .college-image {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .college-image img {
+            width: 95%;
+            max-width: 520px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        /* ✅ CHAT BUTTON */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        /* ✅ CHATBOX */
+        .chatbox {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.3);
+            display: none;
+        }
+
+        .chat-header {
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chat-body {
+            height: 200px;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+        }
+
+        .chat-input button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR -->
+<div class="navbar">
+    <h2>Aditya Degree College</h2>
+
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\savecheck.html">Admission</a>
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\courses.html">Courses</a>
+
+        <!-- ✅ CLICK DROPDOWN 😎 -->
+        <div class="dropdown">
+            <a class="dropbtn" onclick="toggleDropdown(event)">Portal ▼</a>
+
+            <div class="dropdown-content" id="portalMenu">
+                <a href="https://analysis.aditya.ac.in/v23/student/#/">Student Portal</a>
+                <a href="https://abhyas.ai/beta/#/">Abhyas</a>
+                <a href="https://abhyas.ai/lab/#/student">Lab</a>
+                <a href=https://analysis.aditya.ac.in/aep/#/>Examination Portal</a>
+            </div>
+        </div>
+
+        <a href="#">News</a>
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\contact.html">Contact</a>
+        <a href="#">Bus</a>
+        <a href="#">Faculty</a>
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\id.html">ID Generator</a>
+    </div>
+</div>
+
+<!-- ✅ MAIN -->
+<div class="main">
+
+    <div class="members">
+        <div class="card">
+            <img src="member1.jpg">
+            <h4>Member Name 1</h4>
+        </div>
+
+        <div class="card">
+            <img src="member2.jpg">
+            <h4>Member Name 2</h4>
+        </div>
+
+        <div class="card">
+            <img src="member3.jpg">
+            <h4>Member Name 3</h4>
+        </div>
+
+        <div class="card">
+            <img src="member4.jpg">
+            <h4>Member Name 4</h4>
+        </div>
+    </div>
+
+    <div class="college-image">
+        <img src="C:\Users\saisuryakonchada\OneDrive\Desktop\WhatsApp Image 2025-07-05 at 21.47.05_cca558e7.jpg">
+    </div>
+
+</div>
+
+<!-- ✅ CHAT -->
+<button class="chat-button" onclick="toggleChat()">💬</button>
+
+<div class="chatbox" id="chatbox">
+
+    <div class="chat-header">
+        College Assistant 🤖
+        <span onclick="toggleChat()" style="cursor:pointer;">✖</span>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <p><b>Bot:</b> Hello! How can I help you?</p>
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Ask something...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<!-- ✅ SCRIPT -->
+<script>
+function toggleDropdown(event) {
+
+    event.preventDefault();
+
+    let menu = document.getElementById("portalMenu");
+
+    menu.style.display =
+        menu.style.display === "block" ? "none" : "block";
+}
+
+window.onclick = function(e) {
+
+    let menu = document.getElementById("portalMenu");
+
+    if (!e.target.matches('.dropbtn')) {
+        menu.style.display = "none";
+    }
+}
+
+function toggleChat() {
+    let box = document.getElementById("chatbox");
+    box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+/* ✅ SMART CHATBOT 😎 */
+function sendMessage() {
+
+    let input = document.getElementById("userInput");
+    let chat = document.getElementById("chatBody");
+
+    let userText = input.value;
+
+    if (userText === "") return;
+
+    chat.innerHTML += `<p><b>You:</b> ${userText}</p>`;
+
+    let response = getBotResponse(userText);
+
+    chat.innerHTML += `<p><b>Bot:</b> ${response}</p>`;
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function getBotResponse(text) {
+
+    text = text.toLowerCase();
+
+    if (text.includes("course"))
+        return "We offer BCom, BCA, BCA Data Science, BSc AI, BSc CS, Chemistry, Fisheries, and BBA.";
+
+    if (text.includes("admission"))
+        return "Admissions are open. Please fill the admission form from the Admission menu.";
+
+    if (text.includes("contact"))
+        return "You can contact the college office for details.";
+
+    if (text.includes("bus"))
+        return "Bus facility details are available in the Bus section.";
+
+    if (text.includes("faculty"))
+        return "Faculty details are available in the Faculty section.";
+
+    if (text.includes("hello") || text.includes("hi"))
+        return "Hello 👋 How can I assist you?";
+
+
+    return "Please ask about admissions, courses, faculty, bus or contact.";
+}
+</script>
+</body>
+</html>

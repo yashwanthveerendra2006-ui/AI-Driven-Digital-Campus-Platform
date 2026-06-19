@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Degree Courses Portal</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .course-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .course-card:hover { transform: translateY(-4px); }
+    .details-panel { 
+      max-height: 0; 
+      overflow: hidden; 
+      transition: max-height 0.4s ease-out, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .details-panel.open { 
+      max-height: 2000px; 
+      opacity: 1;
+    }
+    .chevron { transition: transform 0.3s ease; }
+    .chevron.rotated { transform: rotate(180deg); }
+    .tab-btn { transition: all 0.2s ease; }
+    .tab-btn.active { 
+      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #2563eb 100%);
+    }
+    .card-shine {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .float-animation { animation: float 3s ease-in-out infinite; }
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gradient-to-br from-slate-50 to-blue-50 overflow-auto">
+  <div class="w-full min-h-full">
+   <!-- Hero Section -->
+   <header class="hero-gradient text-white py-16 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+     <div class="absolute top-10 left-10 w-32 h-32 border-2 border-white rounded-full float-animation"></div>
+     <div class="absolute top-20 right-20 w-20 h-20 border-2 border-white rounded-lg float-animation stagger-1"></div>
+     <div class="absolute bottom-10 left-1/4 w-16 h-16 border-2 border-white rounded-full float-animation stagger-2"></div>
+     <div class="absolute bottom-20 right-1/3 w-24 h-24 border-2 border-white rounded-lg float-animation stagger-3"></div>
+    </div>
+    <div class="max-w-6xl mx-auto text-center relative z-10">
+     <div class="inline-block mb-4 px-4 py-2 bg-white/20 rounded-full text-sm font-medium backdrop-blur-sm">
+      🎓 Academic Year 2026-27
+     </div>
+     <h1 id="main-title" class="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">Undergraduate Degree Programs</h1>
+     <p id="subtitle" class="text-xl text-blue-100 max-w-2xl mx-auto">Explore our comprehensive range of Bachelor's degree courses designed to shape future leaders</p>
+    </div>
+   </header><!-- Category Tabs -->
+   <nav class="max-w-6xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="bg-white rounded-2xl shadow-xl p-2 flex flex-wrap gap-2 justify-center">
+     <button class="tab-btn active px-6 py-3 rounded-xl font-semibold text-sm" data-category="all"> 📚 All Programs </button> <button class="tab-btn px-6 py-3 rounded-xl font-semibold text-sm text-gray-600 hover:bg-blue-50" data-category="bsc"> 🔬 B.Sc Programs </button> <button class="tab-btn px-6 py-3 rounded-xl font-semibold text-sm text-gray-600 hover:bg-blue-50" data-category="bca"> 💻 BCA Programs </button> <button class="tab-btn px-6 py-3 rounded-xl font-semibold text-sm text-gray-600 hover:bg-blue-50" data-category="bcom"> 📊 B.Com Programs </button> <button class="tab-btn px-6 py-3 rounded-xl font-semibold text-sm text-gray-600 hover:bg-blue-50" data-category="bba"> 🏢 BBA Programs </button>
+    </div>
+   </nav><!-- Courses Grid -->
+   <main class="max-w-6xl mx-auto px-6 py-12">
+    <div id="courses-container" class="grid gap-6">
+    <!-- BCA Data Science -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bca">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         📈
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">BCA - Data Science</h3>
+         <p class="text-violet-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">High Demand</span>
+        <svg class="chevron w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-violet-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Specialized BCA with focus on data analytics, SQL, and predictive modeling. Includes certifications in industry tools.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-violet-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 with Mathematics and minimum 50% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-violet-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-lg text-sm">Python for Data Science</span> <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-lg text-sm">R Programming</span> <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-lg text-sm">Deep Learning</span> <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-lg text-sm">Data Mining</span> <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-lg text-sm">SQL</span> <span class="px-3 py-1 bg-violet-50 text-violet-700 rounded-lg text-sm">Cloud Computing</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-violet-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-violet-600">
+           130
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-violet-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-violet-600">
+           ₹65K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-violet-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-violet-600">
+           98%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- BCA Regular -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bca">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         🖥️
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">BCA (Regular)</h3>
+         <p class="text-cyan-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Industry Ready</span>
+        <svg class="chevron w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Professional degree focusing on computer applications, software development, and IT skills. Industry-aligned curriculum with hands-on projects.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 from any stream with minimum 45% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Programming in C/C++</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Java</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Web Technologies</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">DBMS</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Computer Networks</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Software Engineering</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-cyan-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-cyan-600">
+           180
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-cyan-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-cyan-600">
+           ₹50K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-cyan-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-cyan-600">
+           95%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- AI -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bsc">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         🤖
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">Artificial Intelligence</h3>
+         <p class="text-amber-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Trending</span>
+        <svg class="chevron w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-amber-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Cutting-edge program covering AI fundamentals, neural networks, NLP, computer vision, and robotics. Includes hands-on AI project labs.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-amber-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 with Mathematics and minimum 55% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-amber-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-lg text-sm">Machine Learning</span> <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-lg text-sm">Neural Networks</span> <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-lg text-sm">NLP</span> <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-lg text-sm">Computer Vision</span> <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-lg text-sm">Robotics</span> <span class="px-3 py-1 bg-amber-50 text-amber-700 rounded-lg text-sm">AI Ethics</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-amber-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-amber-600">
+           60
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-amber-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-amber-600">
+           ₹75K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-amber-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-amber-600">
+           96%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <!-- BSc Computer Science -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bsc">
+      <div class="card-shine absolute inset-0 pointer-events-none"></div><button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         💻
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">B.Sc Computer Science</h3>
+         <p class="text-blue-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Popular</span>
+        <svg class="chevron w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">A comprehensive program covering programming, algorithms, data structures, software engineering, and computer architecture. Prepares students for careers in software development and IT.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 with Mathematics and minimum 50% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm">C Programming</span> <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm">Data Structures</span> <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm">DBMS</span> <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm">Operating Systems</span> <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm">Web Development</span> <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm">Java</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-blue-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-blue-600">
+           300
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-blue-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-blue-600">
+           ₹45K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-blue-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-blue-600">
+           95%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- BSc Data Science -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bsc">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         📊
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">B.Sc Data Science</h3>
+         <p class="text-indigo-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">High Demand</span>
+        <svg class="chevron w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Focuses on statistical analysis, machine learning, data visualization, and big data technologies. Students learn Python, R, and modern analytics tools.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 with Mathematics/Statistics and minimum 50% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-lg text-sm">Python</span> <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-lg text-sm">Machine Learning</span> <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-lg text-sm">Statistics</span> <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-lg text-sm">Big Data</span> <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-lg text-sm">Data Visualization</span> <span class="px-3 py-1 bg-indigo-50 text-indigo-700 rounded-lg text-sm">SQL</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-indigo-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-indigo-600">
+           120
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-indigo-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-indigo-600">
+           ₹55K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-indigo-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-indigo-600">
+           95%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- BSc Chemistry -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bsc">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         🧪
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">B.Sc Chemistry</h3>
+         <p class="text-emerald-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-sm font-medium">Lab Intensive</span>
+        <svg class="chevron w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Comprehensive study of organic, inorganic, and physical chemistry. Includes extensive laboratory work and research methodology training.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 with Chemistry as main subject and minimum 45% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-emerald-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-sm">Organic Chemistry</span> <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-sm">Inorganic Chemistry</span> <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-sm">Physical Chemistry</span> <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-sm">Analytical Chemistry</span> <span class="px-3 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-sm">Biochemistry</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-emerald-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-emerald-600">
+           80
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-emerald-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-emerald-600">
+           ₹35K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-emerald-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-emerald-600">
+           85%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- BSc Microbiology -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bsc">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-rose-500 to-pink-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         🦠
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">B.Sc Microbiology</h3>
+         <p class="text-rose-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Research Oriented</span>
+        <svg class="chevron w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Study of microorganisms including bacteria, viruses, fungi, and parasites. Focuses on medical microbiology, biotechnology, and environmental applications.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 with Biology/Biotechnology and minimum 50% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-rose-50 text-rose-700 rounded-lg text-sm">Bacteriology</span> <span class="px-3 py-1 bg-rose-50 text-rose-700 rounded-lg text-sm">Virology</span> <span class="px-3 py-1 bg-rose-50 text-rose-700 rounded-lg text-sm">Immunology</span> <span class="px-3 py-1 bg-rose-50 text-rose-700 rounded-lg text-sm">Molecular Biology</span> <span class="px-3 py-1 bg-rose-50 text-rose-700 rounded-lg text-sm">Biotechnology</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-rose-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-rose-600">
+           60
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-rose-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-rose-600">
+           ₹40K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-rose-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-rose-600">
+           88%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- BSc Fisheries -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bsc">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         🐟
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">B.Sc Fisheries</h3>
+         <p class="text-cyan-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Specialized</span>
+        <svg class="chevron w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Comprehensive program on fish biology, aquaculture, fisheries management, and marine sciences. Includes practical training in fish farms and hatcheries.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 with Biology and minimum 45% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Fish Biology</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Aquaculture</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Fish Diseases</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Fisheries Management</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Marine Biology</span> <span class="px-3 py-1 bg-cyan-50 text-cyan-700 rounded-lg text-sm">Food Technology</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-cyan-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-cyan-600">
+           50
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-cyan-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-cyan-600">
+           ₹30K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-cyan-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-cyan-600">
+           80%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- B.Com Regular -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bcom">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         💼
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">B.Com (Regular)</h3>
+         <p class="text-green-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Popular</span>
+        <svg class="chevron w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Comprehensive program in commerce, accounting, business law, and economics. Prepares students for careers in finance, taxation, and business management.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 from any stream with minimum 45% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-green-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-sm">Financial Accounting</span> <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-sm">Business Law</span> <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-sm">Economics</span> <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-sm">Taxation</span> <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-sm">Auditing</span> <span class="px-3 py-1 bg-green-50 text-green-700 rounded-lg text-sm">Cost Accounting</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-green-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-green-600">
+           150
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-green-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-green-600">
+           ₹35K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-green-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-green-600">
+           97%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- B.Com BFSI -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bcom">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         🏦
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">B.Com - BFSI (Banking &amp; Finance)</h3>
+         <p class="text-teal-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">High Demand</span>
+        <svg class="chevron w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-teal-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Specialized program focusing on banking, insurance, and financial services. Covers investment management, risk analysis, and financial planning.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-teal-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 from any stream with minimum 50% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-teal-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-lg text-sm">Banking Operations</span> <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-lg text-sm">Insurance</span> <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-lg text-sm">Investment Management</span> <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-lg text-sm">Risk Management</span> <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-lg text-sm">Financial Planning</span> <span class="px-3 py-1 bg-teal-50 text-teal-700 rounded-lg text-sm">Capital Markets</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-teal-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-teal-600">
+           50
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-teal-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-teal-600">
+           ₹30K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-teal-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-teal-600">
+           94%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- BBA Regular -->
+     <div class="course-card bg-white rounded-2xl shadow-lg overflow-hidden border border-blue-100" data-category="bba">
+      <button class="course-header w-full p-6 flex items-center justify-between text-left hover:bg-blue-50/50 transition-colors">
+       <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center text-2xl shadow-lg">
+         🏢
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-gray-800">BBA (Regular)</h3>
+         <p class="text-orange-600 font-medium">3 Years • Full Time</p>
+        </div>
+       </div>
+       <div class="flex items-center gap-3">
+        <span class="hidden md:block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Popular</span>
+        <svg class="chevron w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+       </div></button>
+      <div class="details-panel">
+       <div class="px-6 pb-6 border-t border-blue-100">
+        <div class="grid md:grid-cols-2 gap-6 pt-6">
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> Program Overview</h4>
+          <p class="text-gray-600 leading-relaxed">Comprehensive management program covering business administration, marketing, operations, and strategic management. Perfect for future business leaders and entrepreneurs.</p>
+         </div>
+         <div>
+          <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> Eligibility</h4>
+          <p class="text-gray-600">10+2 from any stream with minimum 45% aggregate marks</p>
+         </div>
+        </div>
+        <div class="mt-6">
+         <h4 class="font-bold text-gray-800 mb-3 flex items-center gap-2"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> Core Subjects</h4>
+         <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-lg text-sm">Business Management</span> <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-lg text-sm">Marketing</span> <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-lg text-sm">HR Management</span> <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-lg text-sm">Operations</span> <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-lg text-sm">Business Finance</span> <span class="px-3 py-1 bg-orange-50 text-orange-700 rounded-lg text-sm">Entrepreneurship</span>
+         </div>
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+         <div class="text-center p-4 bg-gradient-to-br from-orange-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-orange-600">
+           200
+          </div>
+          <div class="text-sm text-gray-600">
+           Seats
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-orange-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-orange-600">
+           ₹55K
+          </div>
+          <div class="text-sm text-gray-600">
+           Annual Fee
+          </div>
+         </div>
+         <div class="text-center p-4 bg-gradient-to-br from-orange-50 to-white rounded-xl">
+          <div class="text-2xl font-bold text-orange-600">
+           91%
+          </div>
+          <div class="text-sm text-gray-600">
+           Placement
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: 'Undergraduate Degree Programs',
+      subtitle: 'Explore our comprehensive range of Bachelor\'s degree courses designed to shape future leaders',
+      background_color: '#f8fafc',
+      primary_color: '#1e40af',
+      text_color: '#1f2937',
+      accent_color: '#3b82f6',
+      card_color: '#ffffff'
+    };
+
+    async function onConfigChange(config) {
+      const mainTitle = document.getElementById('main-title');
+      const subtitle = document.getElementById('subtitle');
+      
+      if (mainTitle) {
+        mainTitle.textContent = config.main_title || defaultConfig.main_title;
+      }
+      if (subtitle) {
+        subtitle.textContent = config.subtitle || defaultConfig.subtitle;
+      }
+
+      document.body.style.background = `linear-gradient(to bottom right, ${config.background_color || defaultConfig.background_color}, #dbeafe)`;
+      
+      document.querySelectorAll('.hero-gradient').forEach(el => {
+        el.style.background = `linear-gradient(135deg, ${config.primary_color || defaultConfig.primary_color} 0%, ${config.accent_color || defaultConfig.accent_color} 100%)`;
+      });
+
+      document.querySelectorAll('.course-card').forEach(card => {
+        card.style.backgroundColor = config.card_color || defaultConfig.card_color;
+      });
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => {
+              config.background_color = value;
+              window.elementSdk.setConfig({ background_color: value });
+            }
+          },
+          {
+            get: () => config.card_color || defaultConfig.card_color,
+            set: (value) => {
+              config.card_color = value;
+              window.elementSdk.setConfig({ card_color: value });
+            }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => {
+              config.text_color = value;
+              window.elementSdk.setConfig({ text_color: value });
+            }
+          },
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['main_title', config.main_title || defaultConfig.main_title],
+        ['subtitle', config.subtitle || defaultConfig.subtitle]
+      ]);
+    }
+
+    // Initialize Element SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+
+    // Tab filtering
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const category = btn.dataset.category;
+        document.querySelectorAll('.course-card').forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 0.3s ease';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Accordion functionality
+    document.querySelectorAll('.course-header').forEach(header => {
+      header.addEventListener('click', () => {
+        const card = header.closest('.course-card');
+        const panel = card.querySelector('.details-panel');
+        const chevron = header.querySelector('.chevron');
+        
+        // Close other open panels
+        document.querySelectorAll('.details-panel.open').forEach(openPanel => {
+          if (openPanel !== panel) {
+            openPanel.classList.remove('open');
+            openPanel.closest('.course-card').querySelector('.chevron').classList.remove('rotated');
+          }
+        });
+        
+        // Toggle current panel
+        panel.classList.toggle('open');
+        chevron.classList.toggle('rotated');
+      });
+    });
+
+    // Add fadeIn animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cebc105f0c1445b',t:'MTc3MTIzMTM3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

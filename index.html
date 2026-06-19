@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Degree College</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Poppins', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    
+    .dropdown:hover .dropdown-menu { display: block; opacity: 1; transform: translateY(0); }
+    .dropdown-menu { 
+      display: none; 
+      opacity: 0; 
+      transform: translateY(-10px); 
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #1e40af);
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .card-hover:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25);
+    }
+    
+    .gradient-text {
+  background: linear-gradient(135deg, #FF8C00 0%, #FD6A02 50%, #FF8C00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+   }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.3;
+      animation: blob 8s infinite;
+    }
+    
+    @keyframes blob {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -30px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .float-animation { animation: float 6s ease-in-out infinite; }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .slide-up { animation: slideUp 0.8s ease forwards; }
+    .slide-up-delay-1 { animation-delay: 0.2s; opacity: 0; }
+    .slide-up-delay-2 { animation-delay: 0.4s; opacity: 0; }
+    .slide-up-delay-3 { animation-delay: 0.6s; opacity: 0; }
+    
+    .testimonial-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    }
+    
+    .stat-number {
+      background: linear-gradient(135deg, #1e40af, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-white text-gray-800 overflow-auto">
+  <div class="min-h-full">
+    <div class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 text-white py-2 px-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center text-sm">
+     <div class="flex items-center gap-6">
+       <span class="flex items-center gap-2">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+       </svg> 0884 2376662 </span> 
+       <span class="flex items-center gap-2">
+       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+       </svg> info@adityadegree.edu </span>
+     </div>
+     <div class="flex items-center gap-4">
+        <span class="bg-yellow-500 text-blue-900 px-3 py-0.5 rounded-full font-semibold text-xs">NAAC A++</span>
+     </div>
+    </div>
+   </div>
+
+   <nav class="bg-white shadow-lg sticky top-0 z-50 border-b border-blue-100">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="flex justify-between items-center py-3">
+      <div class="flex items-center gap-3">
+       <div class="w-14 h-14 bg-gradient-to-br from--600 to--800 rounded-xl flex items-center justify-center shadow-lg"><span class="text-white font-bold text-xl"><img src="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\images (3).jpeg"></span>
+       </div>
+       <div>
+        <h1 id="college-name" class="font-display text-xl font-bold" style="color: ">
+  Aditya Degree College
+</h1>
+
+        <p id="tagline" class="text-xs text-blue-600 font-medium">Excellence in Education</p>
+       </div>
+      </div>
+      
+      <div class="hidden lg:flex items-center gap-1">
+        <a href="#home" class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a> 
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\savecheck.html" class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">Admissions</a> 
+        
+        <div class="dropdown relative">
+          <button class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center gap-1"> Courses 
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="dropdown-menu absolute top-full left-0 bg-white rounded-xl shadow-2xl border border-blue-100 py-2 min-w-[220px] mt-1">
+            <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\certifications.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
+              <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <div><span class="block font-medium text-gray-800">Free Online Certifications</span> <span class="text-xs text-gray-500">Skill development courses</span></div>
+            </a> 
+            <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\coursesportal.html"class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
+              <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+              </div>
+              <div><span class="block font-medium text-gray-800">Degree Courses</span> <span class="text-xs text-gray-500">UG &amp; PG programs</span></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="dropdown relative">
+          <button class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors flex items-center gap-1"> Portal 
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="dropdown-menu absolute top-full left-0 bg-white rounded-xl shadow-2xl border border-blue-100 py-2 min-w-[220px] mt-1">
+            <a href="https://analysis.aditya.ac.in/v23/student/#/login" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors"><span class="font-medium text-gray-800">Student Portal</span> </a> 
+            <a href="https://abhyas.ai/beta/#/student" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors"><span class="font-medium text-gray-800">Abhyas</span> </a> 
+            <a href="https://abhyas.ai/lab/#/student" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors"><span class="font-medium text-gray-800">Lab</span> </a> 
+            <a href="https://analysis.aditya.ac.in/aep/#/login" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors"><span class="font-medium text-gray-800">Examination Portal</span> </a>
+            <a href="https://public.tableau.com/app/profile/konchada.konchada/viz/samplestudententrollementanalysis/Dashboard1?publish=yes" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors"><span class="font-medium text-gray-800">Principal login</span> </a>
+
+          </div>
+        </div>
+
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\news.html" class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">News</a> 
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\contact.html" class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a> 
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\bus.html" class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">Bus</a> 
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\faculty.html" class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">Faculty</a> 
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\qwe.html" class="nav-link px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors">ID Generator</a>
+        
+
+      </div>
+
+      <button id="mobile-menu-btn" class="lg:hidden p-2 rounded-lg hover:bg-blue-50 transition-colors">
+       <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+       </svg>
+      </button>
+     </div>
+    </div>
+
+    <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-blue-100 pb-4">
+     <div class="px-4 py-2 space-y-1">
+      <a href="#home" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg">Home</a> 
+      <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\savecheck.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg">Admissions</a>
+      <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\news.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg">News</a>
+      <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\bus.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg">Bus</a>
+      <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\faculty.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg">Faculty</a>
+      <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\contact.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg">Contact</a>
+      <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\qwe.html" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 rounded-lg">ID Generator</a>
+     </div>
+    </div>
+   </nav>
+
+   <section id="home" class="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden py-20">
+    <div class="blob w-96 h-96 bg-blue-400 top-0 right-0"></div>
+    <div class="blob w-80 h-80 bg-blue-300 bottom-0 left-0" style="animation-delay: 2s;"></div>
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+     <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="slide-up">
+       <div class="inline-flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6"><span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span> Admissions Open 2025
+       </div>
+       <h1 id="hero-title" class="font-display text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">Shape Your <span class="gradient-text">Future</span> With Excellence</h1>
+       <p id="hero-subtitle" class="text-xl text-gray-600 mb-8 leading-relaxed">Join Aditya Degree College - Where academic excellence meets industry-ready skills. NAAC A++ accredited institution committed to your success.</p>
+       <div class="flex flex-wrap gap-4">
+         <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\savecheck.html">
+<button class="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl hover:shadow-blue-200 transition-all duration-300 transform hover:-translate-y-1"> Apply Now </button> </a>
+         <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\virtual.html"><button class="bg-white text-blue-700 px-8 py-4 rounded-xl font-semibold border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50 transition-all duration-300"> Virtual Tour</button></a>
+       </div>
+      </div>
+     <div class="relative float-animation slide-up slide-up-delay-1">
+  <div class="rounded-3xl overflow-hidden shadow-2xl">
+   <video autoplay muted loop playsinline width="600">
+    <source src="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\lv_0_20260215122338.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+  </div>
+</div>
+   </section>
+<!-- Stats Section -->
+   <section class="py-16 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="text-center">
+       <div class="text-5xl font-bold text-white mb-2">
+        5000+
+       </div>
+       <div class="text-blue-200 font-medium">
+        Students
+       </div>
+      </div>
+      <div class="text-center">
+       <div class="text-5xl font-bold text-white mb-2">
+        200+
+       </div>
+       <div class="text-blue-200 font-medium">
+        Faculty Members
+       </div>
+      </div>
+      <div class="text-center">
+       <div class="text-5xl font-bold text-white mb-2">
+        100+
+       </div>
+       <div class="text-blue-200 font-medium">
+        Recruiters
+       </div>
+      </div>
+      <div class="text-center">
+       <div class="text-5xl font-bold text-white mb-2">
+        50+
+       </div>
+       <div class="text-blue-200 font-medium">
+        Programs
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <!-- Placement Records Section -->
+   <section class="bg-blue-50 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-gray-900 mb-2">Placement Excellence</h3>
+      <p class="text-gray-600">Our students have been placed in top national and international companies</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl p-8 shadow-md border border-blue-100 card-hover">
+       <div class="flex items-center justify-between mb-4">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+         <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+         </svg>
+        </div><span class="text-3xl font-bold text-blue-600">₹9.0L</span>
+       </div>
+       <h4 class="font-bold text-lg text-gray-900 mb-2">Highest Package</h4>
+       <p class="text-gray-600 text-sm">Record breaking salary package awarded to our graduates</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 shadow-md border border-blue-100 card-hover">
+       <div class="flex items-center justify-between mb-4">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+         <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+         </svg>
+        </div><span class="text-3xl font-bold text-blue-600">₹3.5L</span>
+       </div>
+       <h4 class="font-bold text-lg text-gray-900 mb-2">Average Package</h4>
+       <p class="text-gray-600 text-sm">Competitive average salary ensuring financial security</p>
+      </div>
+      <div class="bg-white rounded-2xl p-8 shadow-md border border-blue-100 card-hover">
+       <div class="flex items-center justify-between mb-4">
+        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+         <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.856-1.487M15 10h.01M15 6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+         </svg>
+        </div><span class="text-3xl font-bold text-blue-600">100+</span>
+       </div>
+       <h4 class="font-bold text-lg text-gray-900 mb-2">Top Recruiters</h4>
+       <p class="text-gray-600 text-sm">Leading companies visit campus for placements</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   
+   <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-16"><span class="text-blue-600 font-semibold text-sm tracking-wider uppercase">Why Choose Us</span>
+      <h2 class="font-display text-4xl font-bold text-gray-900 mt-3">Our Achievements</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto mt-4 rounded-full"></div>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8">
+      <div class="card-hover bg-gradient-to-br from-white to-blue-50 rounded-3xl p-8 border border-blue-100 text-center">
+       <div class="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+       </div>
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">NAAC A++ Accredited</h3>
+       <p class="text-gray-600 leading-relaxed">Recognized for maintaining the highest standards of quality in education and student development.</p>
+      </div>
+      <div class="card-hover bg-gradient-to-br from-white to-blue-50 rounded-3xl p-8 border border-blue-100 text-center">
+       <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+       </div>
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">Placement Excellence</h3>
+       <p class="text-gray-600 leading-relaxed">95% placement rate with top recruiters across various industries worldwide.</p>
+      </div>
+      <div class="card-hover bg-gradient-to-br from-white to-blue-50 rounded-3xl p-8 border border-blue-100 text-center">
+       <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+       </div>
+       <h3 class="text-2xl font-bold text-gray-900 mb-3">Recognized Excellence</h3>
+       <p class="text-gray-600 leading-relaxed">Affiliated with prestigious universities and recognized by UGC for exceptional educational standards.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Accreditation Section -->
+   <section class="bg-gradient-to-r from-blue-600 to-blue-700 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-white mb-2">Recognized Excellence</h3>
+      <p class="text-blue-100">Accredited and approved by leading educational bodies</p>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="bg-white/20 backdrop-blur rounded-2xl p-8 text-center hover:bg-white/30 transition">
+       <div class="text-4xl mb-3">
+        ⭐
+       </div>
+       <h4 class="font-bold text-white mb-1">NAAC A++</h4>
+       <p class="text-blue-100 text-sm">Highest accreditation rating</p>
+      </div>
+      <div class="bg-white/20 backdrop-blur rounded-2xl p-8 text-center hover:bg-white/30 transition">
+       <div class="text-4xl mb-3">
+        ✓
+       </div>
+       <h4 class="font-bold text-white mb-1">UGC Approved</h4>
+       <p class="text-blue-100 text-sm">University Grants Commission</p>
+      </div>
+      <div class="bg-white/20 backdrop-blur rounded-2xl p-8 text-center hover:bg-white/30 transition">
+       <div class="text-4xl mb-3">
+        🎓
+       </div>
+       <h4 class="font-bold text-white mb-1">ISO Certified</h4>
+       <p class="text-blue-100 text-sm">Quality management standards</p>
+      </div>
+      <div class="bg-white/20 backdrop-blur rounded-2xl p-8 text-center hover:bg-white/30 transition">
+       <div class="text-4xl mb-3">
+        🏆
+       </div>
+       <h4 class="font-bold text-white mb-1">Top Ranked</h4>
+       <p class="text-blue-100 text-sm">National rankings leader</p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <!-- Testimonials Section -->
+   <section class="bg-gradient-to-b from-white to-blue-50 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+     <div class="text-center mb-12">
+      <h3 class="text-3xl font-bold text-gray-900 mb-2">Testimonials</h3>
+      <p class="text-lg text-gray-600">What Our Students Say</p>
+     </div>
+     <div class="grid md:grid-cols-3 gap-8"><!-- Testimonial 1 -->
+      <div class="card-hover bg-white rounded-2xl p-8 shadow-md border border-blue-100">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+         RS
+        </div>
+        <div>
+         <h4 class="font-bold text-gray-900">Rahul Sharma</h4>
+         <p class="text-sm text-gray-600">B.Tech CSE, 2024</p>
+        </div>
+       </div>
+       <p class="text-gray-700 mb-4 leading-relaxed">"The faculty and infrastructure here are world-class. I got placed in Google thanks to the excellent training and support."</p>
+       <div class="text-yellow-400 text-lg">
+        ⭐⭐⭐⭐⭐
+       </div>
+      </div><!-- Testimonial 2 -->
+      <div class="card-hover bg-white rounded-2xl p-8 shadow-md border border-blue-100">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+         KM
+        </div>
+        <div>
+         <h4 class="font-bold text-gray-900">K Manvitha</h4>
+         <p class="text-sm text-gray-600">Bsc Data Science, 2026</p>
+        </div>
+       </div>
+       <p class="text-gray-700 mb-4 leading-relaxed">"The industry exposure and internship opportunities helped me land my dream job."</p>
+       <div class="text-yellow-400 text-lg">
+        ⭐⭐⭐⭐⭐
+       </div>
+      </div><!-- Testimonial 3 -->
+      <div class="card-hover bg-white rounded-2xl p-8 shadow-md border border-blue-100">
+       <div class="flex items-center gap-4 mb-4">
+        <div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+         AV
+        </div>
+        <div>
+         <h4 class="font-bold text-gray-900">Amit Verma</h4>
+         <p class="text-sm text-gray-600">M.Tech AI, 2024</p>
+        </div>
+       </div>
+       <p class="text-gray-700 mb-4 leading-relaxed">"The research facilities and guidance from professors helped me publish papers in top journals."</p>
+       <div class="text-yellow-400 text-lg">
+        ⭐⭐⭐⭐⭐
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+   <section class="py-20 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(circle, white 2px, transparent 2px); background-size: 50px 50px;"></div>
+    </div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+     <h2 class="font-display text-4xl lg:text-5xl font-bold text-white mb-6">Ready to Begin Your Journey?</h2>
+     <p class="text-xl text-blue-100 mb-8">Join thousands of successful alumni who started their careers at Aditya Degree College.</p>
+     <div class="flex flex-wrap justify-center gap-4">
+       <button class="bg-white text-blue-700 px-8 py-4 rounded-xl font-semibold hover:bg-blue-50 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"> Apply for Admission </button> 
+       <button class="bg-transparent text-white px-8 py-4 rounded-xl font-semibold border-2 border-white hover:bg-white/10 transition-all duration-300"> Download Brochure </button>
+     </div>
+    </div>
+   </section>
+  </div>
+
+  <script>
+    const defaultConfig = {
+      college_name: 'Aditya Degree College',
+      tagline: 'Excellence in Education',
+      hero_title: 'Shape Your Future With Excellence',
+      hero_subtitle: 'Join Aditya Degree College - Where academic excellence meets industry-ready skills. NAAC A++ accredited institution committed to your success.',
+      background_color: '#ffffff',
+      primary_color: '#1e40af',
+      text_color: '#1f2937',
+      accent_color: '#3b82f6',
+      secondary_color: '#f0f7ff',
+      font_family: 'Poppins',
+      font_size: 16
+    };
+
+    async function onConfigChange(config) {
+      document.getElementById('college-name').textContent = config.college_name || defaultConfig.college_name;
+      document.getElementById('tagline').textContent = config.tagline || defaultConfig.tagline;
+      
+      const heroTitle = document.getElementById('hero-title');
+      const title = config.hero_title || defaultConfig.hero_title;
+      if (title.includes('Future')) {
+        const parts = title.split('Future');
+        heroTitle.innerHTML = `${parts[0]}<span class="gradient-text">Future</span>${parts[1] || ''}`;
+      } else {
+        heroTitle.textContent = title;
+      }
+      
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+      const customFont = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${customFont}, sans-serif`;
+    }
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            { get: () => config.background_color, set: (v) => { config.background_color = v; } },
+            { get: () => config.primary_color, set: (v) => { config.primary_color = v; } }
+          ],
+          fontEditable: { get: () => config.font_family, set: (v) => { config.font_family = v; } }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['college_name', config.college_name],
+          ['tagline', config.tagline]
+        ])
+      });
+    } else {
+      onConfigChange(defaultConfig);
+    }
+  </script>
+<!-- Chatbot Button -->
+<div id="chatToggle"
+     class="fixed bottom-5 right-5 bg-blue-900 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl cursor-pointer z-50">
+    💬
+</div>
+
+<!-- Chatbot Box -->
+<div id="chatContainer"
+     class="fixed bottom-24 right-5 w-80 bg-white shadow-2xl rounded-2xl hidden flex flex-col z-50">
+
+    <!-- Header -->
+    <div class="bg-blue-900 text-white p-3 rounded-t-2xl flex justify-between items-center">
+        <span class="font-bold">College Assistant</span>
+        <button onclick="toggleChat()">✖</button>
+    </div>
+
+    <!-- Messages -->
+    <div id="chatBox" class="h-64 p-3 overflow-y-auto space-y-2"></div>
+
+    <!-- Quick Buttons -->
+    <div class="px-3 pb-2 space-y-2">
+        <div class="flex flex-wrap gap-2">
+            <button onclick="quickReply('courses')" 
+                class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-xs">
+                🎓 Courses
+            </button>
+
+            <button onclick="quickReply('fees')" 
+                class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-xs">
+                💰 Fees
+            </button>
+
+            <button onclick="quickReply('admission')" 
+                class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-xs">
+                📝 Admission
+            </button>
+
+            <button onclick="quickReply('location')" 
+                class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-xs">
+                📍 Location
+            </button>
+
+            <button onclick="quickReply('contact')" 
+                class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-xs">
+                📞 Contact
+            </button>
+        </div>
+    </div>
+
+    <!-- Input -->
+    <div class="p-2 border-t flex">
+        <input id="userInput" type="text"
+               placeholder="Ask something..."
+               class="flex-1 border rounded-l-lg p-2 text-sm focus:outline-none">
+        <button onclick="sendMessage()"
+                class="bg-blue-900 text-white px-3 rounded-r-lg text-sm">
+            Send
+        </button>
+    </div>
+</div>
+
+<script>
+
+// Open / Close
+document.getElementById("chatToggle").onclick = function () {
+    toggleChat();
+};
+
+function toggleChat() {
+    let chat = document.getElementById("chatContainer");
+    chat.classList.toggle("hidden");
+}
+
+// Send Message
+function sendMessage() {
+    let input = document.getElementById("userInput");
+    let message = input.value.trim();
+    if (message === "") return;
+
+    addMessage(message, "user");
+
+    let reply = getBotReply(message.toLowerCase());
+    setTimeout(() => {
+        addMessage(reply, "bot");
+    }, 400);
+
+    input.value = "";
+}
+
+// Quick Button Click
+function quickReply(text) {
+    addMessage(text, "user");
+
+    let reply = getBotReply(text.toLowerCase());
+    setTimeout(() => {
+        addMessage(reply, "bot");
+    }, 400);
+}
+
+// Add Message
+function addMessage(text, sender) {
+    let chatBox = document.getElementById("chatBox");
+    let msg = document.createElement("div");
+
+    if (sender === "user") {
+        msg.className = "text-right";
+        msg.innerHTML =
+            `<span class="inline-block bg-blue-200 p-2 rounded-lg text-sm">${text}</span>`;
+    } else {
+        msg.className = "text-left";
+        msg.innerHTML =
+            `<span class="inline-block bg-gray-200 p-2 rounded-lg text-sm">${text}</span>`;
+    }
+
+    chatBox.appendChild(msg);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+// Keyword Response System
+function getBotReply(message) {
+
+    if (message.includes("admission")) {
+        return "Admissions are open. Please visit the Admission section on our website.";
+    }
+
+    else if (message.includes("fees")) {
+        return "Fee details are available in the Fees section or contact the accounts office.";
+    }
+
+    else if (message.includes("courses")) {
+        return "We offer B.Sc, B.Com, B.A, and other degree programs.";
+    }
+
+    else if (message.includes("principal")) {
+        return "Our respected Principal is Dr. XYZ.";
+    }
+
+    else if (message.includes("location") || message.includes("address")) {
+        return "Our college is located in Palasa, Andhra Pradesh.";
+    }
+
+    else if (message.includes("contact")) {
+        return "You can contact us at +91-XXXXXXXXXX.";
+    }
+
+    else {
+        return "Sorry, I didn't understand. Please check our website menu for more details.";
+    }
+}
+
+</script>
+
+ </body>
+</html>

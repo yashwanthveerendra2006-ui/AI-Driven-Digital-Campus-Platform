@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Bus Tracking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ✅ NAVBAR FIXED */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(90deg, #0f172a, #1e293b);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;   /* 🔥 extra spacing */
+            box-sizing: border-box;
+            z-index: 2000;
+        }
+
+        .navbar h1 {
+            font-size: 18px;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-buttons button {
+            padding: 8px 14px;
+            border-radius: 6px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .back-btn {
+            background: #f97316;
+            color: white;
+        }
+
+        .home-btn {
+            background: #22c55e;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background: #ea580c;
+        }
+
+        .home-btn:hover {
+            background: #16a34a;
+        }
+
+        #map {
+            height: calc(100vh - 60px);
+            margin-top: 60px;
+            width: 100%;
+        }
+
+        .route-label {
+            background: white;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR -->
+<div class="navbar">
+    <h1>🚌 College Bus Routes</h1>
+
+    <div class="nav-buttons">
+      <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\index.html">  <button class="back-btn" onclick="goBack()">⬅ Back</button></a>
+    </div>
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+function goBack() {
+    window.history.back();
+}
+
+function goHome() {
+    window.location.href = "home.html"; // Change if needed
+}
+
+const map = L.map('map').setView([16.98907, 82.24747], 11);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+    .addTo(map);
+
+const busIcon = L.icon({
+    iconUrl: 'https://img.icons8.com/color/48/bus.png',
+    iconSize: [34, 34],
+    iconAnchor: [17, 17]
+});
+
+
+/* ✅ Bus Data */
+
+const buses = [
+   { id: 32, origin: [16.98907, 82.24747], destination: [16.95, 82.08], destCity: "Pithapuram" },
+   { id: 42, origin: [16.98907, 82.24747], destination: [16.85, 82.02], destCity: "Samalkot" },
+   { id: 35, origin: [16.98907, 82.24747], destination: [16.5464, 82.04985], destCity: "Razole" },
+   { id: 23, origin: [16.98907, 82.24747], destination: [17.02, 82.02], destCity: "Tuni" },
+   { id: 36, origin: [16.98907, 82.24747], destination: [17.17585, 82.05773], destCity: "Annavaram" },
+   { id: 28, origin: [16.98907, 82.24747], destination: [17.05675, 82.17639], destCity: "Kattipudi" },
+   { id: 38, origin: [16.98907, 82.24747], destination: [16.72984, 82.21524], destCity: "Yanam" }
+];
+
+const colors = ["red", "blue", "green", "purple", "orange", "brown"];
+
+
+/* ✅ Draw Routes */
+
+buses.forEach((bus, index) => {
+
+   bus.line = L.polyline(
+      [bus.origin, bus.destination],
+      { color: colors[index % colors.length], weight: 4 }
+   ).addTo(map)
+    .on("click", () => {
+        L.popup()
+         .setLatLng(bus.destination)
+         .setContent(`<b>Route:</b> Kakinada → ${bus.destCity}`)
+         .openOn(map);
+    });
+
+   L.marker(bus.destination, {
+       icon: L.divIcon({
+           className: 'route-label',
+           html: bus.destCity
+       })
+   }).addTo(map);
+
+});
+
+
+/* ✅ Bus Markers */
+
+buses.forEach(bus => {
+
+   bus.marker = L.marker(bus.origin, { icon: busIcon })
+      .addTo(map)
+      .bindPopup(`
+        <div style="font-size:14px">
+            <b>🚌 Bus No:</b> ${bus.id} <br>
+            <b>From:</b> Kakinada <br>
+            <b>To:</b> ${bus.destCity}
+        </div>
+      `);
+
+});
+
+
+/* ✅ Smooth Movement */
+
+setInterval(() => {
+
+   buses.forEach(bus => {
+
+      let current = bus.marker.getLatLng();
+
+      let lat = current.lat;
+      let lng = current.lng;
+
+      let destLat = bus.destination[0];
+      let destLng = bus.destination[1];
+
+      lat += (destLat - lat) * 0.05;
+      lng += (destLng - lng) * 0.05;
+
+      bus.marker.setLatLng([lat, lng]);
+
+   });
+
+}, 1000);
+
+</script>
+
+</body>
+</html>

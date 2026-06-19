@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aditya Degree College</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f5f5f5;
+        }
+
+        /* ✅ NAVBAR */
+        .navbar {
+            background: #007BFF;
+            padding: 15px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 { margin: 0; }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        /* ✅ MAIN LAYOUT */
+        .main {
+            display: flex;
+            padding: 30px;
+            align-items: center;
+        }
+
+        .text {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .image img {
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        /* ✅ CHAT BUTTON */
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        /* ✅ CHATBOX */
+        .chatbox {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+            display: none;   /* ✅ Hidden initially */
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: #007BFF;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .chat-body {
+            height: 200px;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+        }
+
+        .chat-input button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ✅ NAVBAR -->
+<div class="navbar">
+    <h2>Aditya Degree College</h2>
+
+    <div class="menu">
+        <a href="#">Home</a>
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\savecheck.html">Admission</a>
+        <a href="C:\Users\saisuryakonchada\OneDrive\Desktop\adityabuzz\courses.html">Courses</a>
+        <a href="#">News</a>
+        <a href="#">Contact</a>
+        <a href="#">Bus</a>
+        <a href="#">Faculty</a>
+        <a href="#">ID Generator</a>
+        <a href="">NSS</a>
+    </div>
+</div>
+
+<!-- ✅ MAIN -->
+<div class="main">
+
+    <div class="text">
+        <h2>Welcome</h2>
+        <p>Welcome to Aditya Degree College.</p>
+        <p>Explore admissions, courses, faculty and campus facilities.</p>
+    </div>
+
+    <div class="image">
+        <img src="C:\Users\saisuryakonchada\OneDrive\Desktop\WhatsApp Image 2025-07-05 at 21.47.05_cca558e7.jpg">
+    </div>
+
+</div>
+
+<!-- ✅ CHAT BUTTON -->
+<button class="chat-button" onclick="toggleChat()">💬</button>
+
+<!-- ✅ CHATBOX -->
+<div class="chatbox" id="chatbox">
+
+    <div class="chat-header">
+        College Assistant 🤖
+        <span class="close-btn" onclick="toggleChat()">✖</span>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <p><b>Bot:</b> Hello! How can I help you?</p>
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Ask something...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+</div>
+
+<!-- ✅ SCRIPT -->
+<script>
+function toggleChat() {
+
+    let chatbox = document.getElementById("chatbox");
+
+    if (chatbox.style.display === "none")
+        chatbox.style.display = "block";
+    else
+        chatbox.style.display = "none";
+}
+
+function sendMessage() {
+
+    let input = document.getElementById("userInput");
+    let chatBody = document.getElementById("chatBody");
+
+    let userText = input.value;
+
+    if (userText === "") return;
+
+    chatBody.innerHTML += `<p><b>You:</b> ${userText}</p>`;
+
+    let response = getBotResponse(userText);
+
+    chatBody.innerHTML += `<p><b>Bot:</b> ${response}</p>`;
+
+    input.value = "";
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function getBotResponse(text) {
+
+    text = text.toLowerCase();
+
+    if (text.includes("course"))
+        return "We offer BCom, BCA, BSc, Chemistry, Fisheries, and BBA.";
+
+    if (text.includes("admission"))
+        return "Admissions are open. Please fill the admission form.";
+
+    if (text.includes("hostel fee"))
+        return "There is hostel only for women.";
+
+
+
+    if (text.includes("contact"))
+        return "Please visit the college office for contact details.";
+
+    return "Please ask about courses, admissions, or contact.";
+}
+</script>
+
+</body>
+</html>
